@@ -28,7 +28,7 @@ def generate_n_id(n):
             worksheet.write(row, col, final_id)
             row += 1
         elif final_id in storage or final_id in storage_for_check:
-            generate_n_id()
+            generate_n_id() 
 
 
 generate_n_id(8)
