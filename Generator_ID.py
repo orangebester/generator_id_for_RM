@@ -21,7 +21,7 @@ def generate_n_id(n):
         second = random.choice(alphabet)
         third = random.choice(alphabet)
         forth = random.choice(alphabet)
-        fifth = random.randint(0,1)
+        fifth = random.randint(0,9)
         final_id = str(first) + second.upper() + third + forth.upper() + str(fifth)
         if final_id not in storage and final_id not in storage_for_check:
             storage.append(final_id)
@@ -29,7 +29,6 @@ def generate_n_id(n):
             row += 1
         elif final_id in storage or final_id in storage_for_check:
             generate_n_id()
-    print(storage)
 
 
 generate_n_id(8)
