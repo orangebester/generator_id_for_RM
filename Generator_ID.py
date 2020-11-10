@@ -18,28 +18,18 @@ def generate_n_id(n):
     row, col = (1, 0)
     for step in range(n):
         first = random.randint(0,9)
-        second = "a"
-        third = "a"
-        forth = "a"
+        second = random.choice(alphabet)
+        third = random.choice(alphabet)
+        forth = random.choice(alphabet)
         fifth = random.randint(0,1)
-        final_id = str(first)
+        final_id = str(first) + second.upper() + third + forth.upper() + str(fifth)
         if final_id not in storage and final_id not in storage_for_check:
             storage.append(final_id)
             worksheet.write(row, col, final_id)
             row += 1
         elif final_id in storage or final_id in storage_for_check:
-            generate_id()
+            generate_n_id()
     print(storage)
-
-
-def generate_id():
-    first = random.randint(0,9)
-    second = "a"
-    third = "a"
-    forth = "a"
-    fifth = random.randint(0,1)
-    final_id = str(first)
-    return final_id
 
 
 generate_n_id(8)
