@@ -16,24 +16,27 @@ worksheet.write(0, 0, "Новий ID:", bold)
 def generate_n_id(n):
     temp_storage = []
     while len(temp_storage) < n:
-        first = random.randint(0,9)
-        second = random.choice(alphabet)
-        third = random.choice(alphabet)
-        forth = random.choice(alphabet)
-        fifth = random.randint(0,9)
-        final_id = str(first) + second.upper() + third + forth.upper() + str(fifth)
+        final_id = generate_id()
         if final_id not in temp_storage and final_id not in storage_for_check:
             temp_storage.append(final_id)
     return temp_storage
 
 
-def main(n):
+def generate_id():
+    first = random.randint(0,9)
+    second = random.choice(alphabet)
+    third = random.choice(alphabet)
+    forth = random.choice(alphabet)
+    fifth = random.randint(0,9)
+    not_final_id = str(first) + second.upper() + third + forth.upper() + str(fifth)
+    return not_final_id
+
+
+def general_func(n):
     final_storage = generate_n_id(n)
-    row, col = (1, 0)
-    for element in final_storage:
-        worksheet.write(row, col, element)
-        row += 1
+    for i, element in enumerate(final_storage, start = 2):
+        worksheet.write(f'A{i}', element)
 
 
-main(5)
+general_func(2)
 workbook.close()
